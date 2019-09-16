@@ -11,8 +11,7 @@ class ForecastFacade #refactor with SimpleDelegator
   end
 
   def forecast
-    grab_forecast
-    require 'pry'; binding.pry
+    Forecast.new(grab_forecast)
   end
 
 private
