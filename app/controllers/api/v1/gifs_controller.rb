@@ -1,9 +1,8 @@
 class Api::V1::GifsController < ApplicationController
 
   def index
-    forecast = ForecastFacade.new(location_params).forecast
-    json = ForecastSerializer.new(forecast)
-    render locals: {facade: ForecastFacade.new(location_params).images}
+    enter = ForecastFacade.new(location_params)
+    render json: GiphySerializer.new(enter.images)
   end
 
   private
