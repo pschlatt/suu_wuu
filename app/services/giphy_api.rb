@@ -1,4 +1,3 @@
-require 'pry'
 class GiphyApi
 
   def initialize(forecast)
@@ -9,7 +8,6 @@ class GiphyApi
     response = initial_conn.get("/v1/gifs/search?q=#{@forecast}&api_key=#{ENV["GIPHY_KEY"]}")
     parsed = JSON.parse(response.body)
   end
-
 
   private
 

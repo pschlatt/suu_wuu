@@ -7,9 +7,9 @@ require "rails_helper"
       it "I can see all the fields I expect with the correct data" do
         visit "/api/v1/gifs?location=Denver,CO"
         expect(page).to have_content("data")
-        expect(page).to_not have_content("Null" || "NULL" || "null")
+        expect(page).to have_content("type")
+        expect(page).to_not have_content("Null")
       end
-
 
 
     end
