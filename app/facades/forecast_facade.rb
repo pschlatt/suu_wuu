@@ -14,6 +14,11 @@ class ForecastFacade #refactor with SimpleDelegator
     Forecast.new(grab_forecast)
   end
 
+  def images
+    grab_gifs
+
+  end
+
 private
 
   def grab_geocode
@@ -22,5 +27,9 @@ private
 
   def grab_forecast
     DarkskyApi.new(geo_coordinates.latitude, geo_coordinates.longitude).make_call
+  end
+
+  def grab_gifs
+    GiphyApi.new(forecast).modified_query
   end
 end
