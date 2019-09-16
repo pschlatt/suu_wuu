@@ -5,16 +5,10 @@ class GiphyApi
     @forecast = forecast
   end
 
-  def retrieve_summary
-    "party cloudy"
-  end
-
   def modified_query
-    response = initial_conn.get("/v1/gifs/search?q=#{retrieve_summary}&api_key=#{ENV["GIPHY_KEY"]}")
+    response = initial_conn.get("/v1/gifs/search?q=#{@forecast}&api_key=#{ENV["GIPHY_KEY"]}")
     parsed = JSON.parse(response.body)
   end
-
-
 
 
   private

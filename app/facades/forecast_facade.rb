@@ -16,8 +16,8 @@ class ForecastFacade #refactor with SimpleDelegator
 
   def images
     @all = []
-    forecast.daily["data"].select do |d|
-      @all << Gif.new(d, grab_gifs)
+    forecast.daily["data"].zip(grab_gifs).each do |d, e|
+      @all << Gif.new(d, e)
     end
 
     binding.pry
