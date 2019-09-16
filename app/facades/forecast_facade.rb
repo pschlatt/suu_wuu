@@ -15,7 +15,12 @@ class ForecastFacade #refactor with SimpleDelegator
   end
 
   def images
-    Gif.new(forecast, grab_gifs["data"].first["images"]["original"]["url"])
+    @all = []
+    forecast.daily["data"].select do |d|
+      @all << Gif.new(d, grab_gifs)
+    end
+
+    binding.pry
   end
 
 private
@@ -29,6 +34,10 @@ private
   end
 
   def grab_gifs
-    GiphyApi.new(forecast).modified_query
+    @gifs = []
+    forecast.daily["data"].select do |f|
+      @gifs << GiphyApi.new(f["summary"]).modified_query
+    end
+    @gifs
   end
 end
