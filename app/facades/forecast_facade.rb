@@ -1,4 +1,4 @@
-
+require 'pry'
 
 class ForecastFacade #refactor with SimpleDelegator
   def initialize(location)
@@ -15,8 +15,7 @@ class ForecastFacade #refactor with SimpleDelegator
   end
 
   def images
-    grab_gifs
-
+    Gif.new(forecast, grab_gifs["data"].first["images"]["original"]["url"])
   end
 
 private
