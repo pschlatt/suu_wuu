@@ -10,9 +10,5 @@ require "rails_helper"
         expect(page).to have_content("type")
         expect(page).to_not have_content("Null")
       end
-
-
     end
-
-
   end

@@ -1,5 +1,3 @@
-require 'pry'
-
 class ForecastFacade #refactor with SimpleDelegator
   def initialize(location)
     @location = location

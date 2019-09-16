@@ -16,6 +16,4 @@ class GiphyApi
       f.adapter Faraday.default_adapter
     end
   end
-
-
 end
